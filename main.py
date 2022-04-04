@@ -10,55 +10,45 @@
 #print(sum)
 
 print("Hello karnataka")
-
-def calculate_highest_in_Math(Student_list):
-    Highest_score_in_Math = 0
-    Highest_score_in_Math_Name = " "
-
-    for student in Student_list:
-        if (student.get("Math") > Highest_score_in_Math):
-            Highest_score_in_Math = student.get("Math")
-            Highest_score_in_Math_Name = student.get("Name")
-
-    print(f"The Highest scores in Math is {Highest_score_in_Math} by {Highest_score_in_Math_Name}")
-
-
-def calculate_highest_in_Social(Student_list):
-    Highest_score_in_Social = 0
-    Highest_score_in_Social_Name = " "
-
-    for student in Student_list:
-        if (student.get("Social") > Highest_score_in_Social):
-            Highest_score_in_Social = student.get("Social")
-            Highest_score_in_Social_Name = student.get("Name")
-
-    print(f"The Highest scores in Social is {Highest_score_in_Social} by {Highest_score_in_Social_Name}")
-
-student1={
-    "Math":45,
-    "Social":75,
-    "Science":96,
-    "Name":"Tanmay"
+import random
+print("Hello karnataka")
+student_list = {
+    "dammala_dinesh_paul": {
+        "maths": random.randint(1, 100),
+        "science": random.randint(1, 100),
+        "english": random.randint(1, 100)
+    },
+    "faliya_khan": {
+        "maths": random.randint(1, 100),
+        "science": random.randint(1, 100),
+        "english": random.randint(1, 100)
+    },
+    "ravi": {
+        "maths": random.randint(1, 100),
+        "science": random.randint(1, 100),
+        "english": random.randint(1, 100)
+    }
 }
 
-student2={
-    "Math":74,
-    "Social":83,
-    "Science":100,
-    "Name":"Dheeraj"
-}
 
-student3={
-    "Math":98,
-    "Social":62,
-    "Science":23,
-    "Name":"Sooraj"
-}
+def get_the_highest_score(student_name):
+    sorted_s1 = {}
+    for i in sorted(student_list[student_name].values(), reverse=True):
+        for j in student_list[student_name].keys():
+            if student_list[student_name][j] == i:
+                sorted_s1[j] = i
+    return f"The Highest Scored Subject of the {student_name} in all the subject's is ____{str(list(sorted_s1)[0]).upper()}_____"
 
-Student_list = [student1, student2, student3]
 
-calculate_highest_in_Math(Student_list)
-calculate_highest_in_Social(Student_list)
+loop_student = True
+while loop_student:
+    get_student_name = input(f"Enter the name of the student in the list {[i for i in student_list.keys()]} = ")
+    print(get_the_highest_score(get_student_name))
+    loop_again = input("Do You Want to Repate(Yes/No)? = ").capitalize()
+    if loop_again != "Yes":
+        exit()
+
+    
 
 
 
